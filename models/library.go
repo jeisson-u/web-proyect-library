@@ -13,11 +13,12 @@ const(
 
 
 type Library struct{
+	LocalLibrary *[]NewBook
 }
 func (library Library) GetRandomBooks() []Book{
 
 
-	resp, err := http.Get(googleVolumesApiUrl+"?q=harry+potter&key=_key_&maxResults=6&printType=books")
+	resp, err := http.Get(googleVolumesApiUrl+"?q=harry+potter&key=AIzaSyB0wgQppx-gZkFQiHVGpeppgcMLe2gC3QA&maxResults=6&printType=books")
 
 	if err!=nil{
 		print(err.Error())
@@ -42,7 +43,7 @@ func (library Library) GetRandomBooks() []Book{
 func (Library) GetSearchBook(title string) []Book{
 
 	q:=url.QueryEscape(title)
-	resp, err := http.Get(googleVolumesApiUrl+"?q="+q+"&key=_key_&maxResults=6&printType=books")
+	resp, err := http.Get(googleVolumesApiUrl+"?q="+q+"&key=AIzaSyB0wgQppx-gZkFQiHVGpeppgcMLe2gC3QA&maxResults=6&printType=books")
 
 	if err!=nil{
 		print(err.Error())
@@ -67,7 +68,7 @@ func (Library) GetSearchBook(title string) []Book{
 func (Library) GetById(bookId string) []Book{
 
 
-	resp, err := http.Get(googleVolumesApiUrl+"/"+bookId+"&key=_key_")
+	resp, err := http.Get(googleVolumesApiUrl+"/"+bookId+"&key=AIzaSyB0wgQppx-gZkFQiHVGpeppgcMLe2gC3QA")
 
 	if err!=nil{
 		print(err.Error())
@@ -93,7 +94,7 @@ func (Library) GetById(bookId string) []Book{
 func (Library) NewBook(bookId string) []Book{
 
 
-	resp, err := http.Get(googleVolumesApiUrl+"/"+bookId+"&key=_key_")
+	resp, err := http.Get(googleVolumesApiUrl+"/"+bookId+"&key=AIzaSyB0wgQppx-gZkFQiHVGpeppgcMLe2gC3QA")
 
 	if err!=nil{
 		print(err.Error())
